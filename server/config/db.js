@@ -1,7 +1,15 @@
 const Database = require('better-sqlite3');
 const path = require('path');
+const fs = require('fs');
 
-const dbPath = path.join(__dirname, '../../db/db_factory.sqlite');
+const dbDir = path.join(__dirname, '../../db');
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
+  console.log('[DB] 已创建数据库目录: ' + dbDir);
+}
+
+const dbPath = path.join(dbDir, 'db_factory.sqlite');
+console.log('[DB] 数据库路径: ' + dbPath);
 const db = new Database(dbPath);
 
 // Enable WAL mode for better concurrent performance
