@@ -8,6 +8,9 @@
     "dev": "node server/app.js",
     "init-db": "node db/init-db.js"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^12.11.1",
